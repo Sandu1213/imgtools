@@ -1092,7 +1092,7 @@ const resizeAnnotation = (annotation: AnnotationItem, handleType: string, deltaX
   
   // 特殊处理箭头
   if (annotation.type === 'arrow' && annotation.points) {
-    const [x1, y1, x2, y2] = annotation.points
+    // 计算箭头的新坐标点
     updates.points = [newX, newY, newX + newWidth, newY + newHeight]
   }
   

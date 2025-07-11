@@ -78,10 +78,6 @@ const setDirection = (direction: 'vertical' | 'horizontal') => {
   updateStitchSettings({ direction })
 }
 
-const updateAlignment = () => {
-  updateStitchSettings({ alignment: alignment.value })
-}
-
 const handleDragStart = (index: number) => {
   draggedIndex.value = index
 }
