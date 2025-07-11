@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  photogrid-pro:
+    build: .
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    container_name: photogrid-pro
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # 可选：如果需要HTTPS，可以添加反向代理
+  # nginx-proxy:
+  #   image: nginx:alpine
+  #   ports:
+  #     - "443:443"
+  #   volumes:
+  #     - ./ssl-proxy.conf:/etc/nginx/conf.d/default.conf
+  #     - ./certs:/etc/nginx/certs
+  #   depends_on:
+  #     - photogrid-pro
+  #   restart: unless-stopped
